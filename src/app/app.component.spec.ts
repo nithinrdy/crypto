@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { Coinservice } from './services/coin.service';
 
 class MockCoinService {
-	private dummyCoinObjectArray: Coin = [
+	private dummyCoinObjectArray: Coin[] = [
 		{
 			id: 'bitcoin',
 			symbol: 'btc',
@@ -80,7 +80,7 @@ describe('AppComponent', () => {
 	let component: AppComponent;
 	let coinService: Coinservice;
 
-	const dummyCoinObjectArray: Coin = [
+	const dummyCoinObjectArray: Coin[] = [
 		{
 			id: 'bitcoin',
 			symbol: 'btc',
@@ -182,7 +182,7 @@ describe('AppComponent', () => {
 		component.ngOnInit();
 
 		obs.subscribe(() => {
-			component.coinList = dummyCoinObjectArray;
+			expect(component.coinList).toEqual(dummyCoinObjectArray);
 		});
 	});
 
