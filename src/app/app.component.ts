@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	directiveSubscriptions = new Subscription();
 	constructor(private coinService: Coinservice) {}
 
-	coinList!: Coin;
+	coinList!: Coin[];
 
 	ngOnInit(): void {
 		this.directiveSubscriptions.add(

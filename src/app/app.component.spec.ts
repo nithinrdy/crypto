@@ -70,7 +70,7 @@ class MockCoinService {
 		},
 	];
 
-	getCoins(): Observable<Coin> {
+	getCoins(): Observable<Coin[]> {
 		return of(this.dummyCoinObjectArray);
 	}
 }
