@@ -25,7 +25,7 @@ describe('CoinService', () => {
 	});
 
 	afterEach(() => {
-		// httpController.verify();
+		httpController.verify();
 	});
 
 	it('should be created', () => {
