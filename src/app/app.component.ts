@@ -25,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	setNewQuery(event: string): void {
 		this.query = event;
+		console.log('received new query: ' + this.query);
 	}
 
 	ngOnDestroy(): void {
