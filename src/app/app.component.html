@@ -1,2 +1,6 @@
 <search-bar (queryChangeEmitter)="setNewQuery($event)"></search-bar>
-<coin-list></coin-list>
+<coin-list
+	*ngIf="coinList"
+	[coinList]="coinList"
+	[query]="query"
+></coin-list>

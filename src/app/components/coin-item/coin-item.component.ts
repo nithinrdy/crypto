@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Coin } from './../../models/coin';
 
 @Component({
-  selector: 'app-coin-item',
-  templateUrl: './coin-item.component.html',
-  styleUrls: ['./coin-item.component.css']
+	selector: 'coin-item',
+	templateUrl: './coin-item.component.html',
+	styleUrls: ['./coin-item.component.css'],
 })
 export class CoinItemComponent implements OnInit {
+	@Input() coinEntry!: Coin;
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }
