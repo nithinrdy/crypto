@@ -6,8 +6,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { CoinListComponent } from './components/coin-list/coin-list.component';
 @NgModule({
-	declarations: [AppComponent, SearchBarComponent],
+	declarations: [AppComponent, SearchBarComponent, CoinListComponent],
 	imports: [BrowserModule, HttpClientModule, FormsModule],
 	providers: [HttpClient, Coinservice],
 	bootstrap: [AppComponent],
