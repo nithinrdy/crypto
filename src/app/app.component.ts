@@ -13,6 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	constructor(private coinService: Coinservice) {}
 
 	coinList!: Coin[];
+	query: string = '';
 
 	ngOnInit(): void {
 		this.directiveSubscriptions.add(
@@ -20,6 +21,10 @@ export class AppComponent implements OnInit, OnDestroy {
 				this.coinList = coinList;
 			})
 		);
+	}
+
+	setNewQuery(event: string): void {
+		this.query = event;
 	}
 
 	ngOnDestroy(): void {
