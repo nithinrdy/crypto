@@ -20,9 +20,7 @@ export class CoinListComponent implements OnInit, OnChanges {
 
 	constructor() {}
 
-	ngOnInit(): void {
-		this.filteredCoinList = [];
-	}
+	ngOnInit(): void {}
 	ngOnChanges(changes: SimpleChanges): void {
 		this.filteredCoinList = [];
 		if (this.query === '') {
