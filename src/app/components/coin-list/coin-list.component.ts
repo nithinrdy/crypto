@@ -21,6 +21,7 @@ export class CoinListComponent implements OnInit, OnDestroy {
 			this.coinService.getCoins().subscribe((coinList: Coin[]) => {
 				this.coinList = coinList;
 				this.coinListSubscription.unsubscribe();
+				this.setFilteredCoinList(this.coinService.getSearchQuery());
 			})
 		);
 		this.searchQueryChangeSubscription.add(
@@ -30,7 +31,6 @@ export class CoinListComponent implements OnInit, OnDestroy {
 				}
 			)
 		);
-		this.setFilteredCoinList(this.coinService.getSearchQuery());
 	}
 	setFilteredCoinList(query: string): void {
 		if (this.coinList) {

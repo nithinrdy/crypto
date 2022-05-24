@@ -25,7 +25,10 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
 	setNewSearchQuery(): void {
 		if (window.location.href.includes('coin')) {
-			window.location.href = '';
+			let hiddenBackButton = document.querySelector(
+				'.hidden-back'
+			) as HTMLAnchorElement;
+			hiddenBackButton.click();
 		}
 		this.coinService.setSearchQuery(this.query);
 	}
