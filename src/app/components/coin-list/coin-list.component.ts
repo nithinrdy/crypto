@@ -30,7 +30,7 @@ export class CoinListComponent implements OnInit, OnDestroy {
 				}
 			)
 		);
-		this.setFilteredCoinList('');
+		this.setFilteredCoinList(this.coinService.getSearchQuery());
 	}
 	setFilteredCoinList(query: string): void {
 		if (this.coinList) {
