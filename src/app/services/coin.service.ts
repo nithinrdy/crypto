@@ -18,12 +18,26 @@ export class CoinService {
 		if (this.coinList) {
 			return of(this.coinList);
 		} else {
-			let coinListObervable = this.httpClient.get<Coin[]>(this.coinListUrl);
+			let coinListObervable = this.httpClient.get<Coin[]>(
+				this.coinListUrl
+			);
 			coinListObervable.subscribe((coinList: Coin[]) => {
 				this.coinList = coinList;
-			})
+			});
 			return coinListObervable;
 		}
+	}
+
+	getCoinDetails(symbol: string): Coin | undefined {
+		if (this.coinList) {
+			return this.coinList.filter((coin: Coin) => {
+				return coin.symbol === symbol;
+			})[0];
+		}
+		this.getCoins().subscribe(() => {
+			return this.getCoinDetails(symbol);
+		});
+		return undefined;
 	}
 
 	setSearchQuery(query: string): void {
