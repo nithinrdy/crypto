@@ -1,36 +1,59 @@
-import {
-	Component,
-	Input,
-	OnChanges,
-	OnInit,
-	SimpleChanges,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Coin } from './../../models/coin';
+import { Subscription } from 'rxjs';
+import { CoinService } from 'src/app/services/coin.service';
 
 @Component({
 	selector: 'coin-list',
 	templateUrl: './coin-list.component.html',
 	styleUrls: ['./coin-list.component.css'],
 })
-export class CoinListComponent implements OnInit, OnChanges {
-	@Input() coinList!: Coin[];
-	@Input() query!: string;
-
+export class CoinListComponent implements OnInit, OnDestroy {
+	coinListSubscription = new Subscription();
+	searchQueryChangeSubscription = new Subscription();
+	coinList!: Coin[];
 	filteredCoinList!: Coin[];
 
-	constructor() {}
+	constructor(private coinService: CoinService) {}
 
-	ngOnInit(): void {}
-	ngOnChanges(changes: SimpleChanges): void {
-		this.filteredCoinList = [];
-		if (this.query === '') {
-			this.filteredCoinList = this.coinList;
-		} else {
-			this.coinList.forEach((coin: Coin) => {
-				if (coin.id.includes(this.query.toLowerCase())) {
-					this.filteredCoinList.push(coin);
+	ngOnInit(): void {
+		this.coinListSubscription.add(
+			this.coinService.getCoins().subscribe((coinList: Coin[]) => {
+				this.coinList = coinList;
+				this.coinListSubscription.unsubscribe();
+			})
+		);
+		this.searchQueryChangeSubscription.add(
+			this.coinService.searchQueryChangeEmitter.subscribe(
+				(query: string) => {
+					this.setFilteredCoinList(query);
 				}
-			});
+			)
+		);
+		this.setFilteredCoinList('');
+	}
+	setFilteredCoinList(query: string): void {
+		if (this.coinList) {
+			if (query === '') {
+				this.filteredCoinList = this.coinList;
+				return;
+			} else {
+				this.filteredCoinList = [];
+				this.coinList.forEach((coin: Coin) => {
+					if (coin.id.includes(query.toLowerCase())) {
+						this.filteredCoinList.push(coin);
+					}
+				});
+			}
+		} else {
+			console.log('loading');
+			setTimeout(() => {
+				this.setFilteredCoinList(query);
+			}, 1000);
 		}
+	}
+
+	ngOnDestroy(): void {
+		this.searchQueryChangeSubscription.unsubscribe();
 	}
 }

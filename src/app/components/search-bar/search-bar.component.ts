@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, AfterViewInit } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	OnInit,
+	Output,
+	AfterViewInit,
+} from '@angular/core';
+import { CoinService } from 'src/app/services/coin.service';
 
 @Component({
 	selector: 'search-bar',
@@ -6,22 +13,23 @@ import { Component, EventEmitter, OnInit, Output, AfterViewInit } from '@angular
 	styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit, AfterViewInit {
-	@Output() queryChangeEmitter: EventEmitter<string> = new EventEmitter();
 	query: string = '';
 
-	constructor() {}
+	constructor(private coinService: CoinService) {}
 
 	ngOnInit(): void {}
-  ngAfterViewInit(): void {
-    let searchBar = document.querySelector('.coinSearch') as HTMLInputElement;
+	ngAfterViewInit(): void {
+		let searchBar = document.querySelector(
+			'.coinSearch'
+		) as HTMLInputElement;
 		searchBar.addEventListener('keydown', (e) => {
 			if (e.keyCode == 13) {
-        this.emitQueryChange();
-      }
-		})
-  }
+				this.setNewSearchQuery();
+			}
+		});
+	}
 
-	emitQueryChange(): void {
-		this.queryChangeEmitter.emit(this.query);
+	setNewSearchQuery(): void {
+		this.coinService.setSearchQuery(this.query);
 	}
 }

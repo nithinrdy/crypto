@@ -1,4 +1,4 @@
-<div>
-	<coin-item *ngFor="let coin of filteredCoinList" [coinEntry]="coin">
+<div *ngIf="filteredCoinList">
+	<coin-item *ngFor="let coin of filteredCoinList" [coinInstance]="coin">
 	</coin-item>
 </div>

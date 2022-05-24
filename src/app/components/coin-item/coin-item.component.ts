@@ -7,7 +7,7 @@ import { Coin } from './../../models/coin';
 	styleUrls: ['./coin-item.component.css'],
 })
 export class CoinItemComponent implements OnInit {
-	@Input() coinEntry!: Coin;
+	@Input() coinInstance!: Coin;
 	constructor() {}
 
 	ngOnInit(): void {}
