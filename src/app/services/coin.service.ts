@@ -18,11 +18,11 @@ export class CoinService {
 		if (this.coinList) {
 			return of(this.coinList);
 		} else {
-			let coinFetcher = this.httpClient.get<Coin[]>(this.coinListUrl);
-			coinFetcher.subscribe((coinList: Coin[]) => {
+			let coinListObervable = this.httpClient.get<Coin[]>(this.coinListUrl);
+			coinListObervable.subscribe((coinList: Coin[]) => {
 				this.coinList = coinList;
 			})
-			return coinFetcher;
+			return coinListObervable;
 		}
 	}
 
