@@ -46,7 +46,6 @@ export class CoinListComponent implements OnInit, OnDestroy {
 				});
 			}
 		} else {
-			console.log('loading');
 			setTimeout(() => {
 				this.setFilteredCoinList(query);
 			}, 1000);

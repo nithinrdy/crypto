@@ -21,7 +21,7 @@ const appRoutes = [
 		SearchBarComponent,
 		CoinListComponent,
 		CoinItemComponent,
-  CoinDetailComponent,
+		CoinDetailComponent,
 	],
 	imports: [
 		BrowserModule,

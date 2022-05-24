@@ -1,10 +1,4 @@
-import {
-	Component,
-	EventEmitter,
-	OnInit,
-	Output,
-	AfterViewInit,
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CoinService } from 'src/app/services/coin.service';
 
 @Component({
@@ -30,6 +24,9 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 	}
 
 	setNewSearchQuery(): void {
+		if (window.location.href.includes('coin')) {
+			window.location.href = '';
+		}
 		this.coinService.setSearchQuery(this.query);
 	}
 }
