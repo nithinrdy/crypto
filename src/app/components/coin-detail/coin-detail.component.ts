@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
 import { map } from 'rxjs';
 import { tap } from 'rxjs';
+import { Coin } from 'src/app/models/coin';
+import { CoinService } from 'src/app/services/coin.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-coin-detail',
@@ -10,9 +12,14 @@ import { tap } from 'rxjs';
 	styleUrls: ['./coin-detail.component.css'],
 })
 export class CoinDetailComponent implements OnInit {
-	constructor(private route: ActivatedRoute) {}
+	constructor(
+		private route: ActivatedRoute,
+		private coinService: CoinService,
+		private router: Router
+	) {}
 
 	coinSymbol!: string;
+	coinDetails: Coin | undefined;
 
 	ngOnInit(): void {
 		this.route.paramMap
@@ -24,6 +31,13 @@ export class CoinDetailComponent implements OnInit {
 						: (this.coinSymbol = 'undefined')
 				)
 			)
-			.subscribe((id) => {});
+			.subscribe((id) => {
+				this.coinDetails = this.coinService.getCoinDetails(
+					this.coinSymbol
+				);
+				if (!this.coinDetails) {
+					this.router.navigate(['']);
+				}
+			});
 	}
 }
