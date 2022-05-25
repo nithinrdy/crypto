@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CoinService } from 'src/app/services/coin.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'search-bar',
@@ -9,7 +10,7 @@ import { CoinService } from 'src/app/services/coin.service';
 export class SearchBarComponent implements OnInit, AfterViewInit {
 	query: string = '';
 
-	constructor(private coinService: CoinService) {}
+	constructor(private coinService: CoinService, private router: Router) {}
 
 	ngOnInit(): void {}
 	ngAfterViewInit(): void {
@@ -25,10 +26,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
 	setNewSearchQuery(): void {
 		if (window.location.href.includes('coin')) {
-			let hiddenBackButton = document.querySelector(
-				'.hidden-back'
-			) as HTMLAnchorElement;
-			hiddenBackButton.click();
+			this.router.navigate(['']);
 		}
 		this.coinService.setSearchQuery(this.query);
 	}
