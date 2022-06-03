@@ -12,10 +12,6 @@
 body {
 	padding: 1em;
 	box-sizing: border-box;
-	width: 100vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background: -webkit-linear-gradient(to right, #004e92, #000428);
 	background: linear-gradient(to right, #004e92, #000428);
 }
