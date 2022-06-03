@@ -20,6 +20,7 @@ export class CoinDetailComponent implements OnInit {
 
 	coinSymbol!: string;
 	coinDetails: Coin | undefined;
+	imgUrl!: string;
 
 	ngOnInit(): void {
 		this.route.paramMap
@@ -39,5 +40,9 @@ export class CoinDetailComponent implements OnInit {
 					this.router.navigate(['']);
 				}
 			});
+		if (!this.coinDetails) {
+			return;
+		}
+		this.imgUrl = this.coinDetails.image;
 	}
 }
