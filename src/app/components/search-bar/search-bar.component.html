@@ -1,12 +1,17 @@
-<form>
+<form class="flex flex-col items-center w-screen">
+	<h1 class="text-5xl m-7">Crypto</h1>
 	<input
-		class="coinSearch"
+		class="coinSearch m-5 w-2/5 border-2 border-gray-300 p-2 bg-transparent placeholder-white font-light"
 		type="search"
 		placeholder="Enter a search keyword"
 		name="coinSearch"
 		[(ngModel)]="query"
-	/>
-	<button type="submit" (click)="setNewSearchQuery()">Search</button>
+	/><br />
+	<button
+		class="m-4 border-2 border-white p-2 bg-transparent transition-transform hover:scale-110"
+		type="submit"
+		(click)="setNewSearchQuery()"
+	>
+		SEARCH
+	</button>
 </form>
-
-<a [routerLink]="['/']" style="display: none" class="hidden-back"></a>
