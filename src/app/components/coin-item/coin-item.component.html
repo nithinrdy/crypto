@@ -1,2 +1,12 @@
-<a [routerLink]="['/coin/', coinInstance.symbol]">{{ coinInstance.id }}</a
-><br />
+<div
+	class="border-2 border-white w-fit m-auto p-4 rounded-xl hover:scale-110 transition-transform"
+>
+	<a
+		[routerLink]="['/coin/', coinInstance.symbol]"
+		class="w-full h-full flex flex-row items-center"
+	>
+		<img [src]="coinInstance.image" class="w-16 mr-8" />
+		<h1 class="text-lg">{{ coinInstance.id.toUpperCase() }}</h1>
+	</a>
+</div>
+<br />

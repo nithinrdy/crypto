@@ -1,4 +1,8 @@
-<div *ngIf="filteredCoinList">
-	<coin-item *ngFor="let coin of filteredCoinList" [coinInstance]="coin">
+<div *ngIf="filteredCoinList" class="grid grid-cols-3 w-full">
+	<coin-item
+		*ngFor="let coin of filteredCoinList"
+		[coinInstance]="coin"
+		class="w-full"
+	>
 	</coin-item>
 </div>
