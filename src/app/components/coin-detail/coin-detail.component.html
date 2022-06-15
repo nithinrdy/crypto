@@ -1,48 +1,48 @@
 <div *ngIf="coinDetails" class="flex flex-col items-center">
 	<img [src]="imgUrl" class="mb-4 w-32" />
-	<div class="details grid grid-cols-3 w-full text-lg text-center">
+	<div class="details grid grid-cols-3 w-full text-base text-center">
 		<div class="m-auto mb-10">
-			Name<br />
+			NAME<br />
 			<span class="text-3xl"
 				>{{ coinDetails.name }} ({{ coinDetails.symbol }})</span
 			>
 		</div>
 		<div class="m-auto mb-10">
-			Price<br />
+			PRICE<br />
 			<span class="text-3xl">{{ coinDetails.current_price }} INR</span>
 		</div>
 		<div class="m-auto mb-10">
-			Total Volume<br />
+			TOTAL VOLUME<br />
 			<span class="text-3xl">{{ coinDetails.total_volume }} INR</span>
 		</div>
 		<div class="m-auto mb-10">
-			24 hour high<br />
+			24 HOUR PRICE HIGH<br />
 			<span class="text-3xl">{{ coinDetails.high_24h }} INR</span>
 		</div>
 		<div class="m-auto mb-10">
-			24 hour low<br />
+			24 HOUR PRICE LOW<br />
 			<span class="text-3xl">{{ coinDetails.low_24h }} INR</span>
 		</div>
 		<div class="m-auto mb-10">
-			24 hour price change<br />
+			24 HOUR PRICE CHANGE<br />
 			<span class="text-3xl">{{ coinDetails.price_change_24h }} INR</span>
 		</div>
 		<div class="m-auto mb-10">
-			Market Cap<br />
+			MARKET CAP<br />
 			<span class="text-3xl">{{ coinDetails.market_cap }} INR</span>
 		</div>
 		<div class="m-auto mb-10">
-			24 hour market cap change<br />
+			24 HOUR MARKET CAP CHANGE<br />
 			<span class="text-3xl"
 				>{{ coinDetails.market_cap_change_24h }} INR</span
 			>
 		</div>
 		<div class="m-auto mb-10">
-			Market cap rank<br />
-			<span class="text-3xl">{{ coinDetails.market_cap_rank }} INR</span>
+			MARKET CAP RANK<br />
+			<span class="text-3xl">{{ coinDetails.market_cap_rank }}</span>
 		</div>
 	</div>
-	<div class="mt-8 text-sm">
+	<div class="mt-8 text-xs">
 		Last updated:
 		<span>{{
 			coinDetails.last_updated.replace("T", " ").replace("Z", "")
